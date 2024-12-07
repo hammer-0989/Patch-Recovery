@@ -21,7 +21,7 @@ jobs:
 
     - name: Prepare the environment
       run: |
-        sudo apt install git wget lz4 tar openssl python3 -y
+        sudo apt install git wget lz4 tar openssl python3 p7zip-full -y 
 
     - name: Fetch image from URL
       run: |
@@ -46,9 +46,17 @@ jobs:
         tar cvf fastbootd-recovery.tar recovery.img
         md5sum -t fastbootd-recovery.tar >> fastbootd-recovery.tar
         mv fastbootd-recovery.tar fastbootd-recovery.tar.md5
+        pwd
+        7z a Patched.zip *
 
-    - name: Upload Recovery
+    - name: Upload Recovery #1
       uses: actions/upload-artifact@v3.0.0
       with:
         path: /home/runner/work/Patch-Recovery/Patch-Recovery/output/*.md5
         name: Patched-Recovery
+
+    - name: Upload Recovery #2
+      uses: actions/upload-artifact@v3.0.0
+      with:
+        path: /home/runner/work/Patch-Recovery/Patch-Recovery/*.zip
+        name: Patched
