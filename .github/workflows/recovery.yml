@@ -58,5 +58,5 @@ jobs:
     - name: Upload Recovery #2
       uses: actions/upload-artifact@v3.0.0
       with:
-        path: /home/runner/work/Patch-Recovery/Patch-Recovery/*.zip
+        path: /home/runner/work/Patch-Recovery/Patch-Recovery/output/*.zip
         name: Patched
